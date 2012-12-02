@@ -1,15 +1,13 @@
-%define		git_hash e1f8f25
 %define		pkg	proto-list
 Summary:	A list of objects bound by prototype chain
 Name:		nodejs-%{pkg}
-Version:	1.0.0
+Version:	1.2.2
 Release:	1
 License:	MIT
 Group:		Development/Libraries
 URL:		https://github.com/isaacs/proto-list
-# download from https://github.com/isaacs/%{pkg}/tarball/%%{version}
-Source0:	isaacs-%{pkg}-%{version}-0-g%{git_hash}.tar.gz
-# Source0-md5:	e69215f7828f63085ae8ab6a82cd9051
+Source0:	http://registry.npmjs.org/%{pkg}/-/%{pkg}-%{version}.tgz
+# Source0-md5:	ecd652b4aa9724ee1ca902599dd8deac
 #BuildRequires:  nodejs-tap
 BuildRequires:	rpmbuild(macros) >= 1.634
 Requires:	nodejs
@@ -22,7 +20,7 @@ package manager (npm) configuration.
 
 %prep
 %setup -qc
-mv isaacs-%{pkg}-*/* .
+mv package/* .
 
 %install
 rm -rf $RPM_BUILD_ROOT
