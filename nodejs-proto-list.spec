@@ -25,8 +25,8 @@ mv package/* .
 %install
 rm -rf $RPM_BUILD_ROOT
 
-install -d $RPM_BUILD_ROOT%{nodejs_libdir}
-cp -p %{pkg}.js $RPM_BUILD_ROOT%{nodejs_libdir}
+install -d $RPM_BUILD_ROOT%{nodejs_libdir}/%{pkg}
+cp -p %{pkg}.js package.json $RPM_BUILD_ROOT%{nodejs_libdir}/%{pkg}
 
 # We currently don't run tests because I'd have to file another ten or
 # so review reuqests for the node.js TAP testing framework and methinks there
@@ -40,4 +40,4 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc LICENSE README.md
-%{nodejs_libdir}/%{pkg}.js
+%{nodejs_libdir}/%{pkg}
